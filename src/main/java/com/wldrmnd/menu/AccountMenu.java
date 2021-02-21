@@ -1,9 +1,12 @@
 package com.wldrmnd.menu;
 
 import com.wldrmnd.contoller.AccountController;
+import com.wldrmnd.entity.Account;
 import com.wldrmnd.entity.User;
+import com.wldrmnd.entity.budget.Balance;
 import com.wldrmnd.entity.budget.CreditCard;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class AccountMenu {
@@ -26,7 +29,52 @@ public class AccountMenu {
             controller.setAccountCreditCard(userCredentials, creditCardFromConsole);
             System.out.println(controller.getAll());
         }
+        if (choice == 2){
+            printAuthorizationMenu();
+            int choiceLog = in.nextInt();
+            if (choiceLog == 1){
+//                Account account = createAccount();
+                if(controller.signUp(createAccount())){
+                    System.out.println("Регистрация прошла успешно");
+                }
+                System.out.println("Повторите попытку");
+            }
+            if (choiceLog == 2){
+                controller.signIn(accountFromConsole());
+            }
+        }
+        if (choice == 3){
+            printAllAccount(controller.getAll());
+        }
         menu();
+    }
+
+    private Account accountFromConsole() {
+        Account account = new Account();
+        account.setLogin(in.next());
+        account.setPassword(in.next());
+        return account;
+    }
+
+
+    private void printAllAccount(List<Account> all) {
+        for(Account account : all){
+            System.out.println(account.toString());
+        }
+    }
+
+    private Account createAccount() {
+        Account account = new Account();
+        System.out.println("Придумайте логин");
+        account.setLogin(in.next());
+        System.out.println("Придумайте пароль");
+        account.setPassword(in.next());
+        System.out.println("Введите ваше имя");
+        account.setName(in.next());
+        System.out.println("Введите вашу фамилию");
+        account.setSurname(in.next());
+        account.setBalance(new Balance());
+        return account;
     }
 
     private User inputCredentials() {
@@ -41,6 +89,8 @@ public class AccountMenu {
     private void printMenu() {
         System.out.println("Выбери опцию:");
         System.out.println("1) Добавить карту");
+        System.out.println("2) Login");
+        System.out.println("3) Вывести всех пользователей");
         System.out.println("0) Выйти");
     }
     private void printAuthorizationMenu() {

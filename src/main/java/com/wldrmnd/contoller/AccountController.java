@@ -1,8 +1,8 @@
 package com.wldrmnd.contoller;
 
-import entity.Account;
-import entity.User;
-import entity.budget.CreditCard;
+import com.wldrmnd.entity.Account;
+import com.wldrmnd.entity.User;
+import com.wldrmnd.entity.budget.CreditCard;
 import com.wldrmnd.service.AccountService;
 import com.wldrmnd.service.AuthorizationService;
 
@@ -18,12 +18,9 @@ public class AccountController {
         authorizationService = new AuthorizationService();
     }
 
-    public boolean signIn(User userFromMenu) {
-        return authorizationService.signIn(userFromMenu);
-    }
+    public boolean signIn(Account accontFromMenu) {
 
-    public boolean signUp(User userFromMenu) {
-        return authorizationService.signUp(userFromMenu);
+        return authorizationService.signIn(accontFromMenu);
     }
 
     public boolean setAccountName(User userCredentialsFromMenu, String name) {
@@ -40,5 +37,9 @@ public class AccountController {
 
     public List<Account> getAll() {
         return accountService.getAll();
+    }
+
+    public boolean signUp(Account accountFromMenu) {
+        return authorizationService.signIn(accountFromMenu);
     }
 }

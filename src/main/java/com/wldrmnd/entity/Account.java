@@ -1,7 +1,9 @@
 package com.wldrmnd.entity;
 
 import com.wldrmnd.entity.budget.Balance;
-import entity.budget.Balance;
+import lombok.Getter;
+import lombok.Setter;
+
 
 import java.io.Serializable;
 
@@ -12,6 +14,8 @@ import java.io.Serializable;
 //добавить трата (пицца, шлюха, квартира)
 //добавить долг (мне должен кто-то)
 //вывести траты за определеннный промежуток
+@Setter
+@Getter
 public class Account extends User implements Serializable, Cloneable {
 
     private String name;
@@ -29,10 +33,6 @@ public class Account extends User implements Serializable, Cloneable {
     public Account() {
     }
 
-    public String getName() {
-        return name;
-    }
-
     @Override
     public String toString() {
         return "Account{" +
@@ -45,21 +45,5 @@ public class Account extends User implements Serializable, Cloneable {
     public Account setName(String name) {
         this.name = name;
         return this;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public Balance getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Balance balance) {
-        this.balance = balance;
     }
 }
