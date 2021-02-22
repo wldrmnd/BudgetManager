@@ -18,6 +18,10 @@ public class AccountController {
         authorizationService = new AuthorizationService();
     }
 
+    public boolean signUp(Account accountFromMenu) {
+        return authorizationService.signUp(accountFromMenu);
+    }
+
     public boolean signIn(Account accontFromMenu) {
 
         return authorizationService.signIn(accontFromMenu);
@@ -37,9 +41,5 @@ public class AccountController {
 
     public List<Account> getAll() {
         return accountService.getAll();
-    }
-
-    public boolean signUp(Account accountFromMenu) {
-        return authorizationService.signIn(accountFromMenu);
     }
 }

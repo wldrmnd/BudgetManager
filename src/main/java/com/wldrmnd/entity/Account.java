@@ -1,11 +1,13 @@
 package com.wldrmnd.entity;
 
 import com.wldrmnd.entity.budget.Balance;
+import com.wldrmnd.entity.purchase.Purchase;
 import lombok.Getter;
 import lombok.Setter;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 
 //зарегистрироваться
@@ -21,6 +23,8 @@ public class Account extends User implements Serializable, Cloneable {
     private String name;
     private String surname;
     private Balance balance;
+    private List<Purchase> purchaseList;
+    private double totalAmout;
 
     public Account(User user) {
         setLogin(user.getLogin());
@@ -39,6 +43,7 @@ public class Account extends User implements Serializable, Cloneable {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", balance=" + balance +
+                "purchases=" + purchaseList +
                 '}';
     }
 
