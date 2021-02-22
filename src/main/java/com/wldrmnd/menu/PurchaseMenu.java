@@ -31,6 +31,7 @@ public class PurchaseMenu {
     private void printMenu() {
         System.out.println("1. Добавить продукт");
         System.out.println("2. Вывести все продукты");
+        System.out.println("0. Назад");
     }
 
     private void menu() {

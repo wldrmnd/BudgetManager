@@ -55,6 +55,9 @@ public class AccountMenu {
         if (choice == 5){
             new IncomeMenu();
         }
+        if (choice == 0){
+            return;
+        }
         menu();
     }
 
