@@ -1,10 +1,15 @@
 package com.wldrmnd.entity.budget;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+@Getter
+@Setter
 public class CreditCard implements Serializable {
 
     private String numberOfAccount;

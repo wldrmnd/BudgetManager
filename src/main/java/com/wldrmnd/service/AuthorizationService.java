@@ -6,22 +6,24 @@ import com.wldrmnd.repo.AccountRepo;
 
 public class AuthorizationService {
 
-    private AccountRepo repo;
+    private AccountRepo repo = new AccountRepo();
 
-    public boolean signIn(User user) {
+    public boolean signIn(Account account) {
         for (Account accountToSignIn : repo.getAll()) {
-            if (user.getLogin().equals(accountToSignIn.getLogin()) &&
-                user.getPassword().equals(accountToSignIn.getPassword())) {
+            if (account.getLogin().equals(accountToSignIn.getLogin()) &&
+                account.getPassword().equals(accountToSignIn.getPassword())) {
+                System.out.println("Всё круто");
                 return true;
             }
         }
         return false;
     }
 
-
-    public boolean signUp(User user) {
-        //TODO!! checker
-        repo.add(new Account(user));
-        return true;
+    public boolean signUp(Account accountFromMenu) {
+        if(AccontVerification.getAccont(accountFromMenu)) {
+            repo.add(accountFromMenu);
+            return true;
+        }
+        return false;
     }
 }
